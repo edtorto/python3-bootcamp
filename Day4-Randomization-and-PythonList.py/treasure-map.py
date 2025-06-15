@@ -9,5 +9,6 @@ ABC = ["A", "B","C"]
 letter_index = ABC.index(letter)
 number_index = int(position[1]) - 1
 map[number_index][letter_index] = "X"
-print(f"{list1}\n{list2}\n{list3}") 
+# print(f"{list1}\n{list2}\n{list3}") 
 
+print(int(position[1]))
