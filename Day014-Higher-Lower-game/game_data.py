@@ -1,4 +1,4 @@
-game_data = [
+data = [
     {
         "name": "FIFA 23",
         "follower_account": 19750668,
