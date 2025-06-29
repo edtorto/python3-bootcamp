@@ -83,10 +83,10 @@ def play_game():
 
     while computer_score != 0 and computer_score < 17: # type: ignore
         
-    print(f"Your final hand: {user_cards}, final score: {user_score}") # type: ignore
-    print(f"Computer hand: {computer_cards}, computer score: {computer_score}") # type: ignore
-    print(compare(user_score=user_score, computer_score=computer_score)) # type: ignore
-  
+        print(f"Your final hand: {user_cards}, final score: {user_score}") # type: ignore
+        print(f"Computer hand: {computer_cards}, computer score: {computer_score}") # type: ignore
+        print(compare(user_score=user_score, computer_score=computer_score)) # type: ignore
+
 while input("Do you want to play a game of Blackjack? Type 'y' or 'n' ").lower() == "y":
     os.system('cls' if os.name == 'nt' else 'clear')
 
