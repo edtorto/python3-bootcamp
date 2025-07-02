@@ -1,32 +1,47 @@
 
-resources = {'Water': 1000,
-             'Coffee': 500,
-             'Milk': 1500,
+def print_report():
+    print("\n\n")
+
+def check_resources():
+    print("\n\n")
+
+def process_coins():
+    print("\n\n")
+
+def check_transactions():
+    print("\n\n")
+
+def make_coffee():
+    print("\n\n")
+
+
+resources = {'Water': 300,
+             'Coffee': 100,
+             'Milk': 200,
              'Money':0.00,
              }
 coffee_ingredients = [
     {
         "espresso": {
-            "Water": 100,
-            "Coffee": 75,
-            "Milk": 100,
-            "Money": 2.50,
+            "Water": 50,
+            "Coffee": 18,
+            "Money": 1.50,
             },
         "cappuccino": {
-            "Water": 100,
-            "Coffee": 100,
-            "Milk": 200,
-            "Money": 3.00,
+            "Water": 250,
+            "Coffee": 24,
+            "Milk": 100,
+            "Money": 2.50,
            },
         "latte": {
-            "Water": 100,
-            "Coffee": 50,
+            "Water": 200,
+            "Coffee": 24,
             "Milk": 150,
-            "Money": 2.00,
+            "Money": 3.00,
            },
     }
 ]
-print(coffee_ingredients[0]['espresso']['Water'])
+print(next(iter(resources)))
 
 # Prompt user by asking “ What would you like? (espresso/latte/cappuccino): ”
 user_choice = input("What would you like? (espresso/latte/cappuccino): ").lower()
