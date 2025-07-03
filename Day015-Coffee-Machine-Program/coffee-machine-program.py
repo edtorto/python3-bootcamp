@@ -1,6 +1,15 @@
 
-def print_report():
-    print("\n\n")
+def print_report(user_input, resource_dict):
+
+    keys = list(resource_dict.keys())
+    values = list(resource_dict.values())
+    if user_input == 'report':
+        print(f"{keys[0]}: {values[0]}ml")
+        print(f"{keys[1]}: {values[1]}ml")
+        print(f"{keys[2]}: {values[2]}g")
+        print(f"{keys[3]}: ${values[3]}")
+    return None
+
 
 def check_resources():
     print("\n\n")
@@ -16,10 +25,13 @@ def make_coffee():
 
 
 resources = {'Water': 300,
-             'Coffee': 100,
              'Milk': 200,
+             'Coffee': 100,
              'Money':0.00,
              }
+usr_input = input("What would you like to do?: ").lower()
+print_report(user_input=usr_input, resource_dict=resources)
+
 coffee_ingredients = [
     {
         "espresso": {
@@ -41,7 +53,6 @@ coffee_ingredients = [
            },
     }
 ]
-print(next(iter(resources)))
 
 # Prompt user by asking “ What would you like? (espresso/latte/cappuccino): ”
 user_choice = input("What would you like? (espresso/latte/cappuccino): ").lower()
