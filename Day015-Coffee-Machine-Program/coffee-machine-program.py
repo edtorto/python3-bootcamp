@@ -1,8 +1,8 @@
 
 def print_report(user_input, resource_dict):
 
-    keys = list(resource_dict.keys())
-    values = list(resource_dict.values())
+    keys = resource_dict.keys()
+    values = resource_dict.values()
     if user_input == 'report':
         print(f"{keys[0]}: {values[0]}ml")
         print(f"{keys[1]}: {values[1]}ml")
@@ -11,8 +11,14 @@ def print_report(user_input, resource_dict):
     return None
 
 
-def check_resources():
-    print("\n\n")
+def check_resources(drink_name):
+    if drink_name in MENU:
+        details = MENU[drink_name]
+        for item, amount in details["ingredients"].items():
+            print(f"{item}: {amount}")
+        print(f"cost: {details['cost']}")
+    else:
+        print("Sorry, that drink is not on the menu.")
 
 def process_coins():
     print("\n\n")
@@ -24,38 +30,42 @@ def make_coffee():
     print("\n\n")
 
 
-resources = {'Water': 300,
-             'Milk': 200,
-             'Coffee': 100,
-             'Money':0.00,
+resources = {'water': 300,
+             'milk': 200,
+             'coffee': 100,
              }
-usr_input = input("What would you like to do?: ").lower()
-print_report(user_input=usr_input, resource_dict=resources)
 
-coffee_ingredients = [
-    {
+# usr_input = input("What would you like to do?: ").lower()
+# print_report(user_input=usr_input, resource_dict=resources)
+
+MENU = {
         "espresso": {
-            "Water": 50,
-            "Coffee": 18,
-            "Money": 1.50,
-            },
+            "ingredients":{
+            "water": 50,
+            "coffee": 18,
+        }, "cost": 1.50,
+    },
         "cappuccino": {
-            "Water": 250,
-            "Coffee": 24,
-            "Milk": 100,
-            "Money": 2.50,
-           },
+            "ingredients":{
+            "water": 250,
+            "milk": 100,
+            "coffee": 24,
+           },"cost": 2.50,
+    },
         "latte": {
-            "Water": 200,
-            "Coffee": 24,
-            "Milk": 150,
-            "Money": 3.00,
-           },
-    }
-]
+            "ingredients":{
+            "water": 200,
+            "milk": 150,
+            "coffee": 24,
+           },"cost": 3.00,
+    },
+}
 
+
+# print(f"{MENU[""]}: {values[0]}ml")
 # Prompt user by asking “ What would you like? (espresso/latte/cappuccino): ”
 user_choice = input("What would you like? (espresso/latte/cappuccino): ").lower()
+print(check_resources(user_choice))
 ## Check the user’s input to decide what to do next.
 if user_choice == "espresso":
     print("Enjoy")
