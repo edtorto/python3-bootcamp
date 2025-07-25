@@ -4,3 +4,9 @@
 *.pyd
 *.dll
 __pycache__/
+
+echo "*.rar" >> .gitignore
+echo "*.exe" >> .gitignore
+git add .gitignore
+git commit -m "Ignore .rar and .exe files"
+git push origin main
