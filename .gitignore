@@ -1,1 +1,6 @@
-.git/objects/
+# Ignore virtual environments in any directory
+.venv/
+**/.venv/
+*.pyd
+*.dll
+__pycache__/
