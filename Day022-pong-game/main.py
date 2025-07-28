@@ -1,43 +1,71 @@
-from turtle import Turtle, Screen
+from turtle import Screen, Turtle
 from paddle import Paddle
+from ball import Ball
+from scoreboard import Scoreboard
+
 import time
 
 screen = Screen()
-turtle = Turtle()
-# Set the screen
-screen.setup(width=1200, height=600)
+screen.setup(width=800, height=600)
 screen.bgcolor("black")
 screen.title("The Pong Game")
-
-turtle.goto(0,-300)
-turtle.color("white")
-turtle.pensize(5)
-turtle.hideturtle()
-turtle.left(90)
-turtle.speed("fastest")
 screen.tracer(0)
 
-# Draws dotted lines
-for _ in range(30):
-    turtle.forward(10)
-    turtle.penup()
-    turtle.forward(10)
-    turtle.pendown()
-screen.update()
+number_of_rounds = int(screen.numinput("Number of Rounds", "How many rounds do you want to play?"))
 
-# Create an instance of a class
-paddle = Paddle()
+l_paddle = Paddle((-350,0))
+r_paddle = Paddle((350,0))
+ball = Ball()
+scoreboard = Scoreboard()
+
+turtle = Turtle()
+turtle.hideturtle()
+turtle.color("white")
+turtle.penup()
+turtle.goto(0, -280)
 
 screen.listen()
-screen.onkey(paddle.up, "Up")
-screen.onkey(paddle.down, "Down")
+screen.onkey(r_paddle.go_up, "Up")
+screen.onkey(r_paddle.go_down, "Down")
+screen.onkey(l_paddle.go_up, "w")
+screen.onkey(l_paddle.go_down, "s")
+rounds_played = 0
 
 game_is_on = True
-while game_is_on:
-    time.sleep(0.2)
-    screen.update()
 
-# Create an instance of a class
-# scoreboard = Scoreboard()
+while game_is_on:
+
+    time.sleep(ball.move_speed)
+    screen.update()
+    ball.move()
+
+    #Detect collision with the wall
+    if ball.ycor() > 280 or ball.ycor() < -280:
+        ball.bounce_y()
+
+    #Detect collision with the ball
+    if (ball.distance(r_paddle) < 60 and ball.xcor() > 320
+            or ball.distance(l_paddle) < 60 and ball.xcor() < -320):
+        ball.bounce_x()
+
+    #Detect R paddle miss
+    if ball.xcor() > 380:
+        ball.reset_position()
+        scoreboard.l_point()
+        rounds_played += 1
+
+    # Detect L paddle miss
+    elif ball.xcor() < -380:
+        ball.reset_position()
+        scoreboard.r_point()
+        rounds_played += 1
+    turtle.clear()
+    turtle.write(f"Rounds = {rounds_played}", align='center', font=('Courier', 20, 'bold'))
+
+    if number_of_rounds == rounds_played:
+        game_is_on = False
+        turtle.goto(0, 0)
+        turtle.write("GAME OVER!", align='center', font=('Courier', 20, 'bold'))
+
 
 screen.exitonclick()

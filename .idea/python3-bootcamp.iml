@@ -10,7 +10,7 @@
       <excludeFolder url="file://$MODULE_DIR$/Day020-animation-and-coordinates-snake-game1/.venv/Lib" />
       <excludeFolder url="file://$MODULE_DIR$/Day020-animation-and-coordinates-snake-game1/.venv/Scripts" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.12" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.12 (python3-bootcamp)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="Day016-Object-Oriented-Programming" />
   </component>
