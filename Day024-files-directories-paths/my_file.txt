@@ -1,2 +1,2 @@
-I love Python :) 
+I love Python! 
 My name is Edward!
