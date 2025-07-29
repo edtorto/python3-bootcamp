@@ -7,7 +7,7 @@ from scoreboard import Scoreboard
 screen = Screen()
 
 #Set the screen
-screen.setup(width=600, height=600)
+screen.setup(width=800, height=600)
 screen.tracer(0)
 screen.bgcolor('white')
 screen.title('Crossing Road Game')
@@ -28,5 +28,18 @@ while game_is_on:
     #create and move cars
     car_manager.create_car()
     car_manager.move_cars()
+
+    #Detect collision with car
+    for car in car_manager.all_cars:
+        if car.distance(player) < 20:
+            game_is_on = False
+            scoreboard.game_over()
+
+    #detect successful crossing
+    if player.is_at_finish_line():
+        player.move_to_the_start()
+        car_manager.level_up()
+        scoreboard.increase_level()
+
 
 screen.exitonclick()
