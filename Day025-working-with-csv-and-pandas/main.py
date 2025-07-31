@@ -1,22 +1,23 @@
-# with open("weather_data.csv") as data_file:
-#     data = data_file.readlines()
-#     print(data)
+#using readlines() method on csv
+with open("weather_data.csv") as data_file:
+    w_data = data_file.readlines()
+    print(w_data)
 
-# import csv
-#
-# with open("weather_data.csv") as csv_file:
-#     data = csv.reader(csv_file)
-#     temperature = []
-#     for row in data:
-#         if row[1] != "temp":
-#             temperature.append(int(row[1]))
-#     print(temperature)
+#using csv library
+import csv
+with open("weather_data.csv") as csv_file:
+    csv_data = csv.reader(csv_file)
+    temperature = []
+    for row in csv_data:
+        if row[1] != "temp":
+            temperature.append(int(row[1]))
+    print(temperature)
 
+#using pandas library
 import pandas as pd
-
 data = pd.read_csv("weather_data.csv")
-# print(df.head())
-# print(df["temp"])
+print(data.head())
+print(data["temp"])
 
 #type check
 print(type(data))
@@ -60,3 +61,24 @@ print(student_df)
 
 #save to a csv file
 student_df.to_csv("student_data.csv")
+
+#create a csv file from another csv file
+#read data
+squirrel_data = pd.read_csv("2018_Squirrel_Data.csv")
+
+#count number of different fur colors
+gray_color_count = len(squirrel_data[squirrel_data["Primary Fur Color"] == "Gray"])
+cinnamon_color_count = len(squirrel_data[squirrel_data["Primary Fur Color"] == "Cinnamon"])
+black_color_count = len(squirrel_data[squirrel_data["Primary Fur Color"] == "Black"])
+
+#create the dictionary
+color_dic = {
+    "color": ["Gray", "Cinnamon", "Black"],
+    "count": [gray_color_count, cinnamon_color_count, black_color_count]
+}
+
+# convert to dictionary to dataframe
+df = pd.DataFrame(color_dic)
+
+#save dataframe to csv file
+df.to_csv("squirrel_color_count.csv")
